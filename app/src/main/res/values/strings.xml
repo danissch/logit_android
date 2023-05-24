@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Logit</string>
+    <string name="lista_tareas">Lista de tareas</string>
+    <string-array name="status_list">
+        <item>Selecciona un estado</item>
+        <item>Abierto</item>
+        <item>En progreso</item>
+        <item>Completado</item>
+    </string-array>
+</resources>
