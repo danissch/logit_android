@@ -1,4 +1,4 @@
-package com.example.logit
+package com.example.logit.views
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,10 +9,10 @@ import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
 import androidx.room.Room
+import com.example.logit.R
 import com.example.logit.data.DataObject
 import com.example.logit.data.MyDatabase
 import com.example.logit.models.Entity
-import com.example.logit.utils.ActivityHelper
 import com.example.logit.utils.SpinnerStatusHandler
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

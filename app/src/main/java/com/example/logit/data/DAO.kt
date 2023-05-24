@@ -1,7 +1,7 @@
 package com.example.logit.data
 
 import androidx.room.*
-import com.example.logit.CardInfo
+import com.example.logit.views.CardInfo
 import com.example.logit.models.Entity
 
 @Dao

@@ -1,19 +1,14 @@
-package com.example.logit
+package com.example.logit.views
 
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
-import android.view.WindowManager
 import androidx.room.Room
-import com.example.logit.data.DataObject
+import com.example.logit.R
 import com.example.logit.data.MyDatabase
 import com.example.logit.utils.ActivityHelper
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class SplashScreen: AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.example.logit
+package com.example.logit.views
 
 data class CardInfo (
     var id:Int,

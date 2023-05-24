@@ -1,10 +1,11 @@
-package com.example.logit
+package com.example.logit.views
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
+import com.example.logit.R
 import com.example.logit.data.DataObject
 import com.example.logit.data.MyDatabase
 import com.example.logit.models.Entity
@@ -54,44 +55,11 @@ class UpdateCard: AppCompatActivity() {
             spinnerStatus.setSelection(selectedPosition)
 
             delete_button.setOnClickListener {
-                DataObject.deleteData(pos)
-                GlobalScope.launch {
-                    database.dao().deleteTask(
-                        Entity(
-                            create_id.text.toString().toInt(),
-                            create_title.text.toString(),
-                            create_description.text.toString(),
-                            spinnerStatus.selectedItem.toString()
-                        )
-                    )
-                }
-                myIntent()
+                confirmDelete(pos)
             }
 
             update_button.setOnClickListener {
-                if (create_title.text.toString().trim { it <= ' '}.isNotEmpty()
-                    && create_description.text.toString().trim { it <= ' '}.isNotEmpty()
-                    && spinnerHandler.selectedStatus != 0
-                ){
-                    DataObject.updateData(
-                        pos,
-                        create_title.text.toString(),
-                        create_description.text.toString(),
-                        spinnerStatus.selectedItem.toString()
-                    )
-
-                    GlobalScope.launch {
-                        database.dao().updateTask(
-                            Entity(
-                                create_id.text.toString().toInt(),//pos + 1,
-                                create_title.text.toString(),
-                                create_description.text.toString(),
-                                spinnerStatus.selectedItem.toString()
-                            )
-                        )
-                    }
-                    myIntent()
-                }
+                update(pos)
             }
         }
     }
@@ -99,5 +67,51 @@ class UpdateCard: AppCompatActivity() {
     fun myIntent() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+    }
+
+    fun confirmDelete(pos: Int) {
+        val newFragment = DialogConfirm("¿Seguro que quieres borrar esta tarea?", "BORRAR", "CANCELAR")
+        newFragment.listenerPositive = {
+            DataObject.deleteData(pos)
+            GlobalScope.launch {
+                database.dao().deleteTask(
+                    getEntity()
+                )
+            }
+            myIntent()
+        }
+        newFragment.listenerNegative = {}
+        newFragment.show(supportFragmentManager, "delete")
+    }
+
+    fun update(pos: Int){
+        if (create_title.text.toString().trim { it <= ' '}.isNotEmpty()
+            && create_description.text.toString().trim { it <= ' '}.isNotEmpty()
+            && spinnerHandler.selectedStatus != 0
+        ){
+            DataObject.updateData(
+                pos,
+                create_title.text.toString(),
+                create_description.text.toString(),
+                spinnerStatus.selectedItem.toString()
+            )
+
+            GlobalScope.launch {
+                database.dao().updateTask(
+                    getEntity()
+                )
+            }
+            myIntent()
+        }
+    }
+
+
+    private fun getEntity():Entity{
+        return Entity(
+            create_id.text.toString().toInt(),//pos + 1,
+            create_title.text.toString(),
+            create_description.text.toString(),
+            spinnerStatus.selectedItem.toString()
+        )
     }
 }

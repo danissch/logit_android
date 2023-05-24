@@ -1,4 +1,4 @@
-package com.example.logit
+package com.example.logit.utils
 
 import android.content.Intent
 import android.graphics.Color
@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-//import kotlinx.android.synthetic.main.view.view.*
+import com.example.logit.R
+import com.example.logit.views.CardInfo
+import com.example.logit.views.UpdateCard
 
 class Adapter(var data: List<CardInfo>): RecyclerView.Adapter<Adapter.viewHolder>() {
 

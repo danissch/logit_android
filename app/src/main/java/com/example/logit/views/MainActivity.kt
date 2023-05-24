@@ -1,4 +1,4 @@
-package com.example.logit
+package com.example.logit.views
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,8 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import com.example.logit.utils.Adapter
+import com.example.logit.R
 import com.example.logit.data.DataObject
 import com.example.logit.data.MyDatabase
 import com.example.logit.utils.ActivityHelper
@@ -46,11 +48,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         deleteAll.setOnClickListener {
-            DataObject.deleteAll()
-            GlobalScope.launch {
-                database.dao().deleteAll()
-            }
-            setRecycler()
+            confirmDelete()
         }
     }
 
@@ -83,5 +81,18 @@ class MainActivity : AppCompatActivity() {
     fun setRecycler(){
         recyclerView.adapter = Adapter(DataObject.getAllData())
         recyclerView.layoutManager = LinearLayoutManager(this)
+    }
+
+    fun confirmDelete() {
+        val newFragment = DialogConfirm("¿Seguro que quieres borrar todas las tareas?", "BORRAR", "CANCELAR")
+        newFragment.listenerPositive = {
+            DataObject.deleteAll()
+            GlobalScope.launch {
+                database.dao().deleteAll()
+            }
+            setRecycler()
+        }
+        newFragment.listenerNegative = {}
+        newFragment.show(supportFragmentManager, "delete")
     }
 }

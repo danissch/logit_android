@@ -1,6 +1,6 @@
 package com.example.logit.data
 
-import com.example.logit.CardInfo
+import com.example.logit.views.CardInfo
 
 object DataObject {
     var listData = mutableListOf<CardInfo>()
