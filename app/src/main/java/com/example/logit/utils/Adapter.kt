@@ -15,7 +15,6 @@ import com.example.logit.views.UpdateCard
 class Adapter(var data: List<CardInfo>): RecyclerView.Adapter<Adapter.viewHolder>() {
 
     class viewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-
         var layout: LinearLayout = itemView.findViewById(R.id.mylayout)
         var title: TextView = itemView.findViewById(R.id.title)
         var description:TextView = itemView.findViewById(R.id.description)

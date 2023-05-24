@@ -1,100 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="20dp"
-    tools:context=".views.UpdateCard"
-    >
+    tools:context=".views.UpdateCard">
 
-    <TextView
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/root_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="36sp"
-        android:text="Actualizar Detalles"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:fontFamily="sans-serif"/>
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/create_id"
-        android:layout_marginTop="0dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:textColor="@color/white"
-        android:visibility="invisible"
-        android:text="0"
-        />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/create_title"
-        android:hint="Ingresa el título"
-        android:layout_marginTop="30dp"
-        android:padding="15dp"
-        android:background="@drawable/custom_edittetext"
-        android:textColorHint="#BFBBBB"
-        android:textColor="@color/white"
-        />
-
-    <EditText
-        android:id="@+id/create_description"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_edittetext"
-        android:hint="Descripción"
-        android:padding="15dp"
-        android:textColor="@color/white"
-        android:textColorHint="#BFBBBB" />
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="8dp">
-        <Spinner
-            android:id="@+id/create_status"
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:entries="@array/status_list"
-            android:padding="15dp" />
-    </androidx.cardview.widget.CardView>
+            android:background="@color/black"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="20dp"
+            tools:context=".views.UpdateCard"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="36sp"
+                android:text="Actualizar Detalles"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:fontFamily="sans-serif"/>
+
+            <TextView
+                android:id="@+id/create_id"
+                android:layout_marginTop="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:visibility="invisible"
+                android:text="0"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/create_title"
+                android:hint="Ingresa el título"
+                android:layout_marginTop="30dp"
+                android:padding="15dp"
+                android:background="@drawable/custom_edittetext"
+                android:textColorHint="#BFBBBB"
+                android:textColor="@color/white"
+                />
+
+            <EditText
+                android:id="@+id/create_description"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_edittetext"
+                android:hint="Descripción"
+                android:padding="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="#BFBBBB" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="8dp">
+                <Spinner
+                    android:id="@+id/create_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:entries="@array/status_list"
+                    android:padding="15dp" />
+            </androidx.cardview.widget.CardView>
 
 
-    <LinearLayout
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="25dp">
+            <LinearLayout
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="25dp">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/update_button"
-            android:text="Actualizar"
-            />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/update_button"
+                    android:text="Actualizar"
+                    />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FF5722"
-            android:id="@+id/delete_button"
-            android:text="Borrar"
-            />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#FF5722"
+                    android:id="@+id/delete_button"
+                    android:text="Borrar"
+                    />
 
-    </LinearLayout>
+            </LinearLayout>
 
-</LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
