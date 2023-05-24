@@ -1,5 +1,6 @@
 package com.example.logit.views
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
 import androidx.room.Room
 import com.example.logit.R
+import com.example.logit.data.DataHandler
 import com.example.logit.data.DataObject
 import com.example.logit.data.MyDatabase
 import com.example.logit.models.Entity
@@ -50,10 +52,8 @@ class CreateCard: AppCompatActivity() {
                 var description = create_description.getText().toString()
                 var status = spinnerStatus.selectedItem.toString()
 
-                DataObject.setData(0, title, description, status)
-                GlobalScope.launch {
-                    database.dao().insertTask(Entity(0, title, description, status))
-                }
+                DataHandler.saveData(this, title, description, status)
+
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }

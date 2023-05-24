@@ -1,11 +1,13 @@
 package com.example.logit.views
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.example.logit.R
+import com.example.logit.data.DataHandler
 import com.example.logit.data.DataObject
 import com.example.logit.data.MyDatabase
 import com.example.logit.models.Entity
@@ -72,12 +74,7 @@ class UpdateCard: AppCompatActivity() {
     fun confirmDelete(pos: Int) {
         val newFragment = DialogConfirm("¿Seguro que quieres borrar esta tarea?", "BORRAR", "CANCELAR")
         newFragment.listenerPositive = {
-            DataObject.deleteData(pos)
-            GlobalScope.launch {
-                database.dao().deleteTask(
-                    getEntity()
-                )
-            }
+            DataHandler.delete(this, pos, getEntity())
             myIntent()
         }
         newFragment.listenerNegative = {}
@@ -89,18 +86,14 @@ class UpdateCard: AppCompatActivity() {
             && create_description.text.toString().trim { it <= ' '}.isNotEmpty()
             && spinnerHandler.selectedStatus != 0
         ){
-            DataObject.updateData(
+            DataHandler.updateData(
+                this,
                 pos,
                 create_title.text.toString(),
                 create_description.text.toString(),
-                spinnerStatus.selectedItem.toString()
+                spinnerStatus.selectedItem.toString(),
+                getEntity()
             )
-
-            GlobalScope.launch {
-                database.dao().updateTask(
-                    getEntity()
-                )
-            }
             myIntent()
         }
     }

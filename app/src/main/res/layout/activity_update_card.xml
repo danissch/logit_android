@@ -58,13 +58,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#FFFFFF"
         app:cardCornerRadius="8dp">
         <Spinner
             android:id="@+id/create_status"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTintMode="add"
             android:entries="@array/status_list"
             android:padding="15dp" />
     </androidx.cardview.widget.CardView>

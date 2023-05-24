@@ -2,6 +2,7 @@ package com.example.logit.utils
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -31,6 +32,9 @@ class SpinnerStatusHandler(private var context: Context, private var spinner:Spi
                 val view: TextView = super.getDropDownView(position, convertView, parent) as TextView
                 if(position == 0) {
                     view.setTextColor(Color.GRAY)
+                } else {
+                    //view.setTextColor(Color.BLACK)
+                    //view.backgroundTintMode = PorterDuff.Mode.ADD
                 }
                 return view
             }
